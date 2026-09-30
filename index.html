@@ -6,15 +6,14 @@
 <title>Лорден</title>
 <style>
 [hidden]{display:none!important}
-:root{--bg:#0d0d0d;--m:#333;--l:#b0b0b0;--w:#ececec;box-sizing:border-box}
+:root{--bg:#000;--m:#333;--l:#b0b0b0;--w:#ececec;box-sizing:border-box}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;background:var(--bg)}
-
 body{background:var(--bg);color:var(--w);font-family:"Helvetica Neue",Inter,system-ui,sans-serif}
 section{display:flex;flex-direction:column;align-items:center;padding:24px 20px}
 #home{padding-top:90px;padding-bottom:0}#catalog{padding-top:16px;padding-bottom:0}#info{padding-top:24px;padding-bottom:130px}
 .av{width:min(78vw,380px);aspect-ratio:1;-webkit-mask-image:radial-gradient(circle,#000 45%,transparent 71%);mask-image:radial-gradient(circle,#000 45%,transparent 71%);animation:avin 2s cubic-bezier(.2,.7,.2,1) both}
-.av img{width:100%;height:100%;object-fit:cover;display:block}
+.av img{width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block}
 @keyframes avin{from{opacity:0;transform:scale(.8);filter:blur(16px)}}
 .hello{text-align:center;margin-top:6px}
 .hello h1{font-weight:300;font-size:clamp(28px,7vw,44px);letter-spacing:.04em;animation:up 1.6s 1s both}
@@ -25,44 +24,41 @@ nav{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));
 nav button,.topbtn{font:inherit;color:var(--l);background:none;border:0;padding:11px 18px;border-radius:30px;cursor:pointer;font-size:14px;transition:.35s}
 nav button.on{background:#e2e2e2;color:#111}
 nav button:hover:not(.on),.topbtn:hover{color:#fff;background:#262626}
-nav button:focus-visible,.topbtn:focus-visible{outline:2px solid #999}
 .topbtn{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:16px;z-index:10;border:1px solid var(--m);background:rgba(20,20,20,.75);backdrop-filter:blur(10px);animation:up 1.4s 2.2s both}
 h2{font-weight:300;font-size:28px;letter-spacing:.05em;margin-bottom:22px;text-align:center}
 .big{font-weight:300;overflow-wrap:anywhere;font-size:clamp(36px,10.5vw,72px);line-height:1.12;letter-spacing:.01em;text-align:center;max-width:820px;margin:0 auto 30px;opacity:0}
 #catalog.in .big{animation:rv 1.4s .1s forwards}
-#catalog.in .card{animation-delay:.6s!important}#catalog.in .card:nth-child(2){animation-delay:.85s!important}
 .cards{display:grid;gap:16px;width:min(100%,720px);grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .card{background:#000;border:1px solid #3a3a3a;border-radius:18px;padding:26px;opacity:0;transform:translateY(20px);filter:blur(8px);transition:box-shadow .5s,border-color .5s}
-#catalog.in .card{animation:rv 1.1s forwards}#catalog.in .card:nth-child(2){animation-delay:.25s}
+#catalog.in .card{animation:rv 1.1s .6s forwards}#catalog.in .card:nth-child(2){animation-delay:.85s}
 .card:hover{border-color:#808080;box-shadow:0 0 34px rgba(210,210,210,.18)}
 .card h3{font-weight:400;font-size:21px;margin-bottom:10px}
 .card p{color:var(--l);line-height:1.6;font-size:15px}
 .card p.dz{font-size:clamp(21px,6vw,26px);line-height:1.45;color:var(--w)}
+.card a{display:inline-block;margin-top:16px;color:var(--w);text-decoration:none;border-bottom:1px solid #666;padding-bottom:2px}
 #catalog .tg{display:block;width:min(100%,720px);margin-top:18px;text-align:center;padding:18px;border-radius:40px;background:#e2e2e2;color:#111;font-size:18px;text-decoration:none;opacity:0;transition:box-shadow .4s,transform .3s}
 #catalog.in .tg{animation:rv 1.1s 1.1s forwards}
-.tg2{margin-top:12px!important;background:transparent!important;color:var(--w)!important;border:1px solid #555}
+#catalog .tg2{margin-top:12px;background:transparent;color:var(--w);border:1px solid #555}
 #catalog.in .tg2{animation-delay:1.3s}
 .tg2:hover{border-color:#aaa}
 .tg:hover{box-shadow:0 0 34px rgba(230,230,230,.35)}.tg:active{transform:scale(.98)}
 .quote{max-width:520px;margin:34px auto 0;text-align:center;font-weight:300;font-style:italic;font-size:clamp(18px,5vw,24px);line-height:1.5;color:var(--w);padding-top:26px;border-top:1px solid #2c2c2c;animation:up 1.6s 2.4s both}
-.quote cite{display:block;margin-top:12px;font-style:normal;font-size:14px;letter-spacing:.14em;color:var(--l)}
-.card a{display:inline-block;margin-top:16px;color:var(--w);text-decoration:none;border-bottom:1px solid #666;padding-bottom:2px}
-.txt{width:min(100%,600px);line-height:1.75;color:var(--l);font-size:16px;}
+.quote span{display:block;margin-top:12px;font-style:normal;font-size:14px;letter-spacing:.14em;color:var(--l)}
+.txt{width:min(100%,600px);line-height:1.75;color:var(--l);font-size:16px}
 .txt h2{margin-bottom:14px;text-align:left;color:var(--w);opacity:0;transition:.9s}
 .txt p{margin-bottom:14px;opacity:0;transform:translateY(8px);filter:blur(5px);transition:.9s}
 .txt p.show,.txt h2.show{opacity:1;transform:none;filter:none}
 .cur{display:inline-block;width:2px;height:1.1em;background:var(--w);vertical-align:text-bottom;margin-left:2px;animation:bl 1s steps(1) infinite}
 @keyframes bl{50%{opacity:0}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01s!important;animation-delay:0s!important;transition-duration:.01s!important}}
 </style>
 </head>
 <body>
 <button class="topbtn" data-go="info">Информация</button>
 
 <section id="home">
-  <div class="av"><img src="avatar.jpg" alt="Лорден"></div>
+  <div class="av"><img src="14d1d6da37539ae76244a32be0f6a7c8.jpg" alt="Лорден"></div>
   <div class="hello"><h1>Добро пожаловать</h1><p>Вас приветствует Лорден</p></div>
-  <blockquote class="quote">«Можно скрыть лицо. Нельзя скрыть результат»— Lorden</blockquote>
+  <blockquote class="quote">«Можно скрыть лицо. Нельзя скрыть результат»<span>— Lorden</span></blockquote>
 </section>
 
 <section id="catalog">
@@ -72,8 +68,8 @@ h2{font-weight:300;font-size:28px;letter-spacing:.05em;margin-bottom:22px;text-a
     <div class="card"><h3>Разработка</h3><p>Создам для вас Telegram-бота, сайт или личный проект под ваши идеи по доступной цене.</p><a href="https://t.me/rozovoye" target="_blank" rel="noopener">@rozovoye</a></div>
     <div class="card"><h3>Дизайн</h3><p class="dz">Превью для видео YouTube<br>Карточка товара Playerok</p><a href="https://t.me/rozovoye" target="_blank" rel="noopener">@rozovoye</a></div>
   </div>
-<a class="tg" href="https://t.me/rozovoye" target="_blank" rel="noopener">Написать в Telegram</a>
-<a class="tg tg2" href="https://t.me/ottziviLondona" target="_blank" rel="noopener">Отзывы</a>
+  <a class="tg" href="https://t.me/rozovoye" target="_blank" rel="noopener">Написать в Telegram</a>
+  <a class="tg tg2" href="https://t.me/ottziviLondona" target="_blank" rel="noopener">Отзывы</a>
 </section>
 
 <section id="info"><div class="txt" id="txt"></div></section>
@@ -88,6 +84,7 @@ h2{font-weight:300;font-size:28px;letter-spacing:.05em;margin-bottom:22px;text-a
 const btns=[...document.querySelectorAll('nav button')];
 document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.go).scrollIntoView({behavior:'smooth'}));
 const secs=[...document.querySelectorAll('section')];
+let started=false;
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const id=e.target.id;
  if(id==='catalog')e.target.classList.add('in');
  if(id==='info'&&!started){started=true;typeInfo()}}),{threshold:.05});
@@ -96,7 +93,6 @@ function mark(){let cur=secs[0].id;for(const s of secs){if(s.getBoundingClientRe
  if(innerHeight+scrollY>=document.body.scrollHeight-4)cur=secs[secs.length-1].id;
  btns.forEach(b=>b.classList.toggle('on',b.dataset.go===cur))}
 addEventListener('scroll',mark,{passive:true});mark();
-let started=false;
 const T=[["h","Философия Лордена"],
 ["p","Лорден соединяет технологии, творчество и внимание к деталям, превращая обычные идеи в необычные цифровые проекты."],
 ["p","Для него важен не только результат, но и то, как проект ощущается во время взаимодействия с ним. Каждая деталь — от визуального стиля до анимаций и интерфейса — должна дополнять общую атмосферу и создавать собственный характер."],
